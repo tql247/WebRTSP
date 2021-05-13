@@ -1,9 +1,11 @@
 const spawn = require('child_process').spawn;
 let freeportAsync = require("freeport-async");
 const fs = require('fs'), http = require('http'), WebSocket = require('ws');
+const streamProcess = {}
+const socketHttpMap = {}
 
 function getRTSPs(machineName) {
-    return ['rtsp://admin:sks12345@114.32.128.31/3/1']
+    return []
 }
 
 async function rtspToHTTP(rtspList) {
@@ -43,6 +45,7 @@ async function rtspToHTTP(rtspList) {
             console.log('finished');
         });
 
+        streamProcess[http] = proc;
 
         httpList.push(http);
         console.log('http')
@@ -132,7 +135,9 @@ async function httpToWebsocket(httpList) {
     for (let httpLink of httpList) {
         const WEBSOCKET_PORT = await freeportAsync(portPoint);
         const STREAM_PORT = parseInt(httpLink.match(/:([0-9]+)/)[0].replace(':', ''))
-        websocketList.push(buildStream(STREAM_SECRET, STREAM_PORT, WEBSOCKET_PORT))
+        const socket = buildStream(STREAM_SECRET, STREAM_PORT, WEBSOCKET_PORT)
+        socketHttpMap[socket] = httpLink
+        websocketList.push(socket)
         portPoint = WEBSOCKET_PORT + 1;
     }
 
@@ -144,4 +149,13 @@ async function rtspToWebsocket(rtspList) {
     return httpToWebsocket(httpList)
 }
 
-module.exports = {getRTSPs, rtspToWebsocket}
+function clearStream(socket) {
+    const httpSrc = socketHttpMap[socket]
+    const proc = streamProcess[httpSrc]
+    delete socketHttpMap[socket];
+    delete streamProcess[httpSrc];
+    proc.kill()
+    return Object.keys(socketHttpMap);
+}
+
+module.exports = {getRTSPs, rtspToWebsocket, clearStream}
