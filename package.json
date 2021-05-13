@@ -1,0 +1,32 @@
+{
+  "name": "uni_social",
+  "version": "1.0.0",
+  "main": "build_stream.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "ffmpeg": "^0.0.4",
+    "freeport-async": "^2.0.0",
+    "nodemon": "^2.0.7",
+    "socket.io": "^4.0.1",
+    "ws": "^7.4.5"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@schemas": "src/schemas",
+    "@models": "src/models",
+    "@utils": "src/utils",
+    "@services": "src/services",
+    "@thirdparty": "src/thirdparty"
+  },
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "find-free-port": "^2.0.0"
+  }
+}
