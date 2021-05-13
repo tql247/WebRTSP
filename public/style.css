@@ -1,4 +1,5 @@
 body {
+    margin: 3px;
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
@@ -19,17 +20,17 @@ canvas {
 
 .v1 {
     max-height: 90vh;
-    max-width: 98vw;
+    max-width: 99%;
 }
 
 .v2 {
     max-height: 45vh;
-    max-width: 48vw;
+    max-width: 50%;
 }
 
 .v3 {
     max-height: 32vh;
-    max-width: 31vw;
+    max-width: 33%;
 }
 
 .d-flex-horizon {
