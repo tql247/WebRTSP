@@ -125,7 +125,7 @@ function buildStream(STREAM_SECRET, STREAM_PORT, WEBSOCKET_PORT) {
     console.log('Listening for incomming MPEG-TS Stream on http://127.0.0.1:' + STREAM_PORT + '/<secret>');
     console.log('Awaiting WebSocket connections on ws://127.0.0.1:' + WEBSOCKET_PORT + '/');
 
-    return `ws://127.0.0.1:${WEBSOCKET_PORT}`
+    return `ws://0.0.0.0:${WEBSOCKET_PORT}`
 }
 
 async function httpToWebsocket(httpList) {

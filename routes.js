@@ -11,7 +11,12 @@ router.get('/', async (req, res) => {
         const rtspList = getRTSPs();
         listSocket = await rtspToWebsocket(rtspList)
     }
-    res.render('views/index.ejs', {listSocket: listSocket, camNum:listSocket.length});
+    console.log(req.headers)
+    res.render('views/index.ejs', {
+        listSocket: listSocket,
+        camNum:listSocket.length,
+        hostName: req.headers.host.replace(/:.+/, '')
+    });
 })
 
 router.post('/addStream', async (req, res) => {

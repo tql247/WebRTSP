@@ -17,5 +17,9 @@ app.set("views",".");
 app.use('/', routes);
 app.set('trust proxy', 1);
 
-app.listen(3000, () => console.log(`Listening at http://localhost:${3000}`))
+app.listen(
+    process.env.PORT || 4000,
+    process.env.HOST || 'localhost',
+    () => console.log(`Listening at ${process.env.HOST || 'localhost'}:${process.env.PORT || 4000}`)
+)
 

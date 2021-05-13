@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSMpeg Stream Client</title>
+    <title>WebRTSP</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="/public/jsmpeg.min.js"></script>
@@ -20,7 +20,7 @@
 
 <div class="view">
     <% listSocket.forEach((socket) => { %>
-        <div class="is-relative jsmpeg canvas-wrapper v<%= Math.ceil(Math.sqrt(camNum)) %>" data-url="<%= socket %>">
+        <div class="is-relative jsmpeg canvas-wrapper v<%= Math.ceil(Math.sqrt(camNum)) %>" data-url="<%= socket.replace(/:\/\/.+:/, `://${hostName}:`) %>">
             <form class="clear-form" action="/clearStream" method="POST">
                 <input type="text" value="<%= socket %>" name="socket" class="is-hidden">
                 <button type="submit">
