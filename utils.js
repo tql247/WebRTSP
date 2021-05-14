@@ -17,6 +17,8 @@ async function rtspToHTTP(rtspList) {
         const http = `http://127.0.0.1:${reStreamPort}/${process.env.SECRET_KEY || 'abc'}`
         const args = [
             '-rtsp_transport', 'tcp',
+            '-hwaccel_device', '0',
+            '-hwaccel', 'cuda',
             '-i', rtsp,
             '-f', 'mpegts',
             '-codec:v', 'mpeg1video',
@@ -33,16 +35,16 @@ async function rtspToHTTP(rtspList) {
 
         const proc = spawn(cmd, args);
         proc.stdout.on('data', function(data) {
-            console.log(data);
+            // console.log(data);
         });
 
         proc.stderr.setEncoding("utf8")
         proc.stderr.on('data', function(data) {
-            console.log(data);
+            // console.log(data);
         });
 
         proc.on('close', function() {
-            console.log('finished');
+            console.log('finished/');
         });
 
         streamProcess[http] = proc;

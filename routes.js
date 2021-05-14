@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
         const rtspList = getRTSPs();
         listSocket = await rtspToWebsocket(rtspList)
     }
-    console.log(req.headers)
     res.render('views/index.ejs', {
         listSocket: listSocket,
         camNum:listSocket.length,
