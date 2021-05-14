@@ -1,6 +1,6 @@
 const spawn = require('child_process').spawn;
 let freeportAsync = require("freeport-async");
-const fs = require('fs'), http = require('http'), WebSocket = require('ws');
+const http = require('http'), WebSocket = require('ws');
 const streamProcess = {}
 const socketHttpMap = {}
 
@@ -35,23 +35,21 @@ async function rtspToHTTP(rtspList) {
 
         const proc = spawn(cmd, args);
         proc.stdout.on('data', function(data) {
-            // console.log(data);
+            console.log(data);
         });
 
         proc.stderr.setEncoding("utf8")
         proc.stderr.on('data', function(data) {
-            // console.log(data);
+            console.log(data);
         });
 
         proc.on('close', function() {
-            console.log('finished/');
+            console.log('finished');
         });
 
         streamProcess[http] = proc;
 
         httpList.push(http);
-        console.log('http')
-        console.log(http)
     }
     return httpList
 }

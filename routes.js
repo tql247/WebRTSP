@@ -27,10 +27,7 @@ router.post('/addStream', async (req, res) => {
 
 router.post('/clearStream', async (req, res) => {
     const {socket} = req.body;
-    console.log('listSocket')
-    console.log(listSocket)
     listSocket = clearStream(socket);
-    console.log(listSocket)
     return res.redirect('back');
 })
 
