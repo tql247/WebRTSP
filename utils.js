@@ -131,9 +131,10 @@ function buildStream(STREAM_SECRET, STREAM_PORT, WEBSOCKET_PORT) {
 async function httpToWebsocket(httpList) {
     const STREAM_SECRET = process.env.SECRET_KEY
     const websocketList = []
-    let portPoint = 7000
+    let portPoint = process.env.SOCKET_PORT_RANGE_START
+
     for (let httpLink of httpList) {
-        const WEBSOCKET_PORT = await freeportAsync(portPoint);
+        const WEBSOCKET_PORT = portPoint;
         const STREAM_PORT = parseInt(httpLink.match(/:([0-9]+)/)[0].replace(':', ''))
         const socket = buildStream(STREAM_SECRET, STREAM_PORT, WEBSOCKET_PORT)
         socketHttpMap[socket] = httpLink
