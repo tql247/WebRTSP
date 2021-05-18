@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="vn">
 <head>
     <title>WebRTSP</title>
 
@@ -20,18 +20,26 @@
 
 <div class="view">
     <% listSocket.forEach((socket) => { %>
-        <div class="is-relative jsmpeg canvas-wrapper v<%= Math.ceil(Math.sqrt(camNum)) %>" data-url="<%= socket.replace(/:\/\/.+:/, `://${hostName}:`) %>">
-            <form class="clear-form" action="/clearStream" method="POST">
-                <input type="text" value="<%= socket %>" name="socket" class="is-hidden">
-                <button type="submit">
-                    <span class="icon-text has-text-danger">
-                          <span class="icon">
-                            <i class="fas fa-ban"></i>
-                          </span>
-                          <span>stop</span>
+        <div class="is-relative jsmpeg canvas-wrapper v<%= Math.ceil(Math.sqrt(camNum)) %>"
+             data-url="<%= socket.replace(/:\/\/.+:/, `://${hostName}:`) %>">
+            <div class="control-form">
+                <button type="button" class="fill-display">
+                    <span class="icon-text has-text-success">
+                          <span>Switch view</span>
                     </span>
                 </button>
-            </form>
+                <form action="/clearStream" method="POST">
+                    <label>
+                        <input type="text" value="<%= socket %>" name="socket" class="is-hidden">
+                    </label>
+                    <button type="submit">
+                    <span class="icon-text has-text-danger">
+                          <span>stop</span>
+                    </span>
+                    </button>
+                </form>
+
+            </div>
         </div>
     <% }) %>
 </div>

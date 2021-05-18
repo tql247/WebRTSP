@@ -14,8 +14,18 @@ canvas {
     height: 100%;
 }
 
+.fill-canvas {
+    width: auto !important;
+    max-width: 100%;
+    height: auto !important;
+    max-height: 100%;
+}
+
 .canvas-wrapper {
     flex-grow: 1;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
 }
 
 .v1 {
@@ -39,15 +49,19 @@ canvas {
     align-items: center;
 }
 
-.clear-form {
+.control-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
+    left: 0;
     right: 0;
-    top: 0;
+    bottom: 0;
     position: absolute;
-    transition: ease-in-out 10ms;
+    transition: ease-in-out 500ms;
 }
 
-.clear-form:hover {
+.control-form:hover {
     opacity: 1;
     transition: ease-in-out 10ms;
 }
