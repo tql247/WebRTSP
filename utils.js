@@ -17,8 +17,8 @@ async function rtspToHTTP(rtspList) {
         const http = `http://127.0.0.1:${reStreamPort}/${process.env.SECRET_KEY || 'abc'}`
         const args = [
             '-rtsp_transport', 'tcp',
-            '-hwaccel_device', '0',
-            '-hwaccel', 'cuda',
+            // '-hwaccel_device', '0',
+            // '-hwaccel', 'cuda',
             '-i', rtsp,
             '-f', 'mpegts',
             '-codec:v', 'mpeg1video',

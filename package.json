@@ -1,5 +1,5 @@
 {
-  "name": "uni_social",
+  "name": "web_rtsp",
   "version": "1.0.0",
   "main": "build_stream.js",
   "bin": "app.js",
