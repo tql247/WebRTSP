@@ -16,6 +16,9 @@ function fitCurrentDisplay(e) {
         target.classList.add('fill-canvas')
 }
 
+// on wheel, transform, scale, translate
+//  $(this).css({transform:'scale(0.5) translate(50px, 100px)'})
+
 
 $(document).on("dblclick", '.canvas-wrapper', toggleFullScreen);
 $(document).on("click", '.fill-display', fitCurrentDisplay);

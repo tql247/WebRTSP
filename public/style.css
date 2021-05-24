@@ -26,6 +26,7 @@ canvas {
     display: flex !important;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .v1 {

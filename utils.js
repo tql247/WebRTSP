@@ -26,7 +26,7 @@ async function rtspToHTTP(rtspList) {
             '-b:v', '1500k',
             '-r', '30',
             '-bf', '0',
-            '-codec:a', 'mp2',
+            '-codec:a', 'mp3',
             '-ar', '44100',
             '-ac', '1',
             '-b:a', '128k',
